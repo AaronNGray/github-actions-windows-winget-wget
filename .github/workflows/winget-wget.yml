@@ -1,4 +1,4 @@
-name: Manual build static libraries
+name: Test winget'ed wget
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ on:
 
 
 jobs:
-  build-libxml2:
+  test-winget-wget:
     strategy:
       matrix:
         os: [ windows-latest ]
@@ -41,11 +41,11 @@ jobs:
 
       - name: set up dependencies Windows
         if: runner.os == 'Windows'
-        shell: cmd
+        shell: pwsh
         run: |
           winget install -e --id=GNU.Wget2
-          tree \
-          tree C:\
-          $env:Path += ";.\bin";
+          rem tree \
+          rem tree C:\
+          dir C:\Users\aaron\AppData\Local\Microsoft\WinGet\Packages\JernejSimoncic.Wget_Microsoft.Winget.Source_8wekyb3d8bbwe
+          $env:Path += ";C:\Users\aaron\AppData\Local\Microsoft\WinGet\Packages\JernejSimoncic.Wget_Microsoft.Winget.Source_8wekyb3d8bbwe\bin\";
           wget
-    
