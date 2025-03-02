@@ -34,6 +34,9 @@ jobs:
           winget list Wget
           winget show Wget
           dir $env:LOCALAPPDATA\Microsoft\WinGet\Packages
-          
+          dir $env:LOCALAPPDATA\Microsoft\WinGet\Packages\GNU.Wget2_Microsoft.Winget.Source_8wekyb3d8bbwe
+          dir $env:LOCALAPPDATA\Microsoft\WinGet\Packages\GNU.Wget2_Microsoft.Winget.Source_8wekyb3d8bbwe\bin
+          where wget
+          $env:Path += ";$env:LOCALAPPDATA\Microsoft\WinGet\Packages\GNU.Wget2_Microsoft.Winget.Source_8wekyb3d8bbwe\bin\";
           where wget
           wget
