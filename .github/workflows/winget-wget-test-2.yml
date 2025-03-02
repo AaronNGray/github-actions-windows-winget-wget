@@ -32,7 +32,7 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
-          winget install -e --id=GNU.Wget2
+          winget install -e --id=GNU.Wget2 --accept-source-agreements --accept-package-agreements
           dir $env:LOCALAPPDATA\Microsoft\WinGet\Packages\JernejSimoncic.Wget_Microsoft.Winget.Source_8wekyb3d8bbwe
           $env:Path += ";$env:LOCALAPPDATA\Microsoft\WinGet\Packages\JernejSimoncic.Wget_Microsoft.Winget.Source_8wekyb3d8bbwe\bin\";
           wget
