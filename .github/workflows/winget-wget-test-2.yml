@@ -4,9 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - feature/update-external-libraries
       - main
-
 
 jobs:
   test-winget-wget:
@@ -33,6 +31,9 @@ jobs:
         shell: pwsh
         run: |
           winget install -e --id=GNU.Wget2 --accept-source-agreements --accept-package-agreements
-          dir $env:LOCALAPPDATA\Microsoft\WinGet\Packages\JernejSimoncic.Wget_Microsoft.Winget.Source_8wekyb3d8bbwe
-          $env:Path += ";$env:LOCALAPPDATA\Microsoft\WinGet\Packages\JernejSimoncic.Wget_Microsoft.Winget.Source_8wekyb3d8bbwe\bin\";
+          winget list Wget
+          winget show Wget
+          dir $env:LOCALAPPDATA\Microsoft\WinGet\Packages
+          
+          where wget
           wget
