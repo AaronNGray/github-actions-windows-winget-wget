@@ -36,7 +36,7 @@ jobs:
           dir $env:LOCALAPPDATA\Microsoft\WinGet\Packages
           dir $env:LOCALAPPDATA\Microsoft\WinGet\Packages\GNU.Wget2_Microsoft.Winget.Source_8wekyb3d8bbwe
           dir $env:LOCALAPPDATA\Microsoft\WinGet\Packages\GNU.Wget2_Microsoft.Winget.Source_8wekyb3d8bbwe\bin
-          where wget
-          $env:Path += ";$env:LOCALAPPDATA\Microsoft\WinGet\Packages\GNU.Wget2_Microsoft.Winget.Source_8wekyb3d8bbwe\bin\";
-          where wget
-          wget
+          where wget2
+          $env:Path += ";$env:LOCALAPPDATA\Microsoft\WinGet\Packages\GNU.Wget2_Microsoft.Winget.Source_8wekyb3d8bbwe\";
+          where wget2
+          wget2
