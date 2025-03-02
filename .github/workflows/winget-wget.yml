@@ -1,0 +1,50 @@
+name: Manual build static libraries
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/update-external-libraries
+      - main
+
+
+jobs:
+  build-libxml2:
+    strategy:
+      matrix:
+        os: [ ubuntu-24.04, ubuntu-24.04-arm, macos-latest, windows-latest ]
+
+      fail-fast: false
+
+    runs-on: ${{ matrix.os }}
+    env:
+      JOB_VAR: "job_value"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up dependencies Linux
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget cmake autoconf automake
+
+      - name: Set up dependencies Macos
+        if: runner.os == 'macOS'
+        run: |
+          brew install wget cmake autoconf automake
+
+      - name: set up dependencies Windows
+        if: runner.os == 'Windows'
+        uses: Cyberboss/install-winget@v1          
+
+      - name: set up dependencies Windows
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: |
+          winget install -e --id=GNU.Wget2
+          tree
+          $env:Path += ";.\bin";
+          wget
+    
