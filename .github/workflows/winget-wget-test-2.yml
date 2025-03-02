@@ -1,0 +1,38 @@
+name: Test 2 winget'ed wget
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/update-external-libraries
+      - main
+
+
+jobs:
+  test-winget-wget:
+    strategy:
+      matrix:
+        os: [ windows-latest ]
+
+      fail-fast: false
+
+    runs-on: ${{ matrix.os }}
+    env:
+      JOB_VAR: "job_value"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: set up dependencies Windows
+        if: runner.os == 'Windows'
+        uses: Cyberboss/install-winget@v1          
+
+      - name: set up dependencies Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          winget install -e --id=GNU.Wget2
+          dir $env:LOCALAPPDATA\Microsoft\WinGet\Packages\JernejSimoncic.Wget_Microsoft.Winget.Source_8wekyb3d8bbwe
+          $env:Path += ";$env:LOCALAPPDATA\Microsoft\WinGet\Packages\JernejSimoncic.Wget_Microsoft.Winget.Source_8wekyb3d8bbwe\bin\";
+          wget
