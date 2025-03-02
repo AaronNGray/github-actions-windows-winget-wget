@@ -44,6 +44,6 @@ jobs:
         shell: pwsh
         run: |
           winget install -e --id=GNU.Wget2
-          dir C:\Users\aaron\AppData\Local\Microsoft\WinGet\Packages\JernejSimoncic.Wget_Microsoft.Winget.Source_8wekyb3d8bbwe
-          $env:Path += ";C:\Users\aaron\AppData\Local\Microsoft\WinGet\Packages\JernejSimoncic.Wget_Microsoft.Winget.Source_8wekyb3d8bbwe\bin\";
+          dir %LOCALAPPDATA%\Microsoft\WinGet\Packages\JernejSimoncic.Wget_Microsoft.Winget.Source_8wekyb3d8bbwe
+          $env:Path += ";%LOCALAPPDATA%\Microsoft\WinGet\Packages\JernejSimoncic.Wget_Microsoft.Winget.Source_8wekyb3d8bbwe\bin\";
           wget
