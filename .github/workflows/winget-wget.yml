@@ -44,7 +44,7 @@ jobs:
         shell: cmd
         run: |
           winget install -e --id=GNU.Wget2
-          tree
+          tree \
           $env:Path += ";.\bin";
           wget
     
