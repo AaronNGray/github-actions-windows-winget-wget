@@ -44,8 +44,6 @@ jobs:
         shell: pwsh
         run: |
           winget install -e --id=GNU.Wget2
-          rem tree \
-          rem tree C:\
           dir C:\Users\aaron\AppData\Local\Microsoft\WinGet\Packages\JernejSimoncic.Wget_Microsoft.Winget.Source_8wekyb3d8bbwe
           $env:Path += ";C:\Users\aaron\AppData\Local\Microsoft\WinGet\Packages\JernejSimoncic.Wget_Microsoft.Winget.Source_8wekyb3d8bbwe\bin\";
           wget
